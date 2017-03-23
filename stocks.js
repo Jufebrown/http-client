@@ -28,7 +28,14 @@ get(`http://dev.markitondemand.com/MODApis/Api/v2/InteractiveChart/json?paramete
   res.on('end', () => {
     try {
       let parsedData = JSON.parse(rawData);
-      console.log(parsedData);
+      let prices = parsedData.Elements[0].DataSeries.close.values
+      let sum = 0
+      prices.forEach((each) => {
+        sum += each
+      })
+      let average = (sum/365).toFixed(2)
+
+      console.log(average);
     } catch (e) {
       console.log(e.message);
     }
