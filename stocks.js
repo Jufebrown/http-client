@@ -1,6 +1,9 @@
 const { get } = require('http');
+const { argv: [,, ...args] } = process
 
-get('http://dev.markitondemand.com/MODApis/Api/v2/InteractiveChart/json?parameters={"Normalized":false,"NumberOfDays":365,"DataPeriod":"Day","Elements":[{"Symbol":"AAPL","Type":"price","Params":["c"]}]}', (res) => {
+let company = args[0]
+
+get(`http://dev.markitondemand.com/MODApis/Api/v2/InteractiveChart/json?parameters={"Normalized":false,"NumberOfDays":365,"DataPeriod":"Day","Elements":[{"Symbol":"${company}","Type":"price","Params":["c"]}]}`, (res) => {
   const statusCode = res.statusCode;
   const contentType = res.headers['content-type'];
 
