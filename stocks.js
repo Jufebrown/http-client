@@ -33,7 +33,7 @@ get(`http://dev.markitondemand.com/MODApis/Api/v2/InteractiveChart/json?paramete
       prices.forEach((each) => {
         sum += each
       })
-      let average = (sum/365).toFixed(2)
+      let average = (sum/prices.length).toFixed(2)
 
       console.log(average);
     } catch (e) {
